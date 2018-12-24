@@ -13,10 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {
-  AccessAlarm,
-  ThreeDRotation
-} from '@material-ui/icons';
+import Icon from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
@@ -65,7 +62,7 @@ class ResponsiveDrawer extends React.Component {
   handleIconDrawer = (index) => {
     switch(index) {
       case 0:
-        return <AccessAlarm>add_circle</AccessAlarm>;
+        return <Icon>add_circle</Icon>;
       default:
     }
   }
@@ -124,7 +121,7 @@ class ResponsiveDrawer extends React.Component {
           </Hidden>
           <Hidden xsDown implementation="css">
             <Drawer
-              classes={{
+              classes={{  
                 paper: classes.drawerPaper,
               }}
               variant="permanent"

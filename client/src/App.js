@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import ResponsiveDrawer from './publics/ResponsiveDrawer';
+import ResponsiveDrawer from './components/ResponsiveDrawer';
 
 export default class App extends Component {
   render() {
     return (
-      < ResponsiveDrawer / >
+      <ResponsiveDrawer / >
     );
   }
 }
