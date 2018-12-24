@@ -13,7 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/icons';
+import Icon from '@material-ui/core/Icon';
 import { withStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
@@ -48,6 +48,10 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
+  bgTitleDrawer: {
+    background: '#555555',
+    height: '100%'
+  }
 });
 
 class ResponsiveDrawer extends React.Component {
@@ -62,7 +66,11 @@ class ResponsiveDrawer extends React.Component {
   handleIconDrawer = (index) => {
     switch(index) {
       case 0:
-        return <Icon>add_circle</Icon>;
+        return <Icon>home</Icon>;
+      case 1:
+        return <Icon>movie</Icon>;
+      case 2:
+        return <Icon>people</Icon>;
       default:
     }
   }
@@ -72,12 +80,18 @@ class ResponsiveDrawer extends React.Component {
 
     const drawer = (
       <div>
-        <div className={classes.toolbar} />
+        <div className={classes.toolbar}>
+          <div className='bgTitleDrawer'>
+            <Typography variant='headline' color='inherit' noWrap>
+              Admin Panel
+            </Typography>
+          </div>
+        </div>
         <Divider />
         <List>
           {['Home', 'Movies', 'Users'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{this.handleIconDrawer}</ListItemIcon>
+              <ListItemIcon>{this.handleIconDrawer(index)}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}          
@@ -88,27 +102,27 @@ class ResponsiveDrawer extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar position="fixed" className={classes.appBar}>
+        <AppBar position='fixed' className={classes.appBar}>
           <Toolbar>
             <IconButton
-              color="inherit"
-              aria-label="Open drawer"
+              color='inherit'
+              aria-label='Open drawer'
               onClick={this.handleDrawerToggle}
               className={classes.menuButton}
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant='h6' color='inherit' noWrap>
               Responsive drawer
             </Typography>
           </Toolbar>
         </AppBar>
-        <nav className={classes.drawer}>
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Hidden smUp implementation="css">
+        <nav className={classes.drawer}>
+          <Hidden smUp implementation='css'>
             <Drawer
               container={this.props.container}
-              variant="temporary"
+              variant='temporary'
               anchor={theme.direction === 'rtl' ? 'right' : 'left'}
               open={this.state.mobileOpen}
               onClose={this.handleDrawerToggle}
@@ -119,12 +133,12 @@ class ResponsiveDrawer extends React.Component {
               {drawer}
             </Drawer>
           </Hidden>
-          <Hidden xsDown implementation="css">
+          <Hidden xsDown implementation='css'>
             <Drawer
               classes={{  
                 paper: classes.drawerPaper,
               }}
-              variant="permanent"
+              variant='permanent'
               open
             >
               {drawer}
