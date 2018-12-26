@@ -1,11 +1,17 @@
 'use strict'
 
-const Video = use('App/Models/Video')
+const videos = use('App/Models/Video')
 
 class MovieController {
-	async index ({res}) {
-		let movies = await Video.all()
-		return res.json(movies)
+	
+	async index ({response}) {
+		let movies = await videos.query().limit(10).fetch();
+		return response.json(movies)
+	}
+
+	async show ({params, response}) {
+		let movie = await videos.find(params.id);
+		return response.json(movie)
 	}
 }
 

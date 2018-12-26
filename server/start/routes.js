@@ -23,4 +23,10 @@ Route.get('/', () => {
 Route.group(() => {
   Route.get('videos', 'VideoController.index')
   Route.get('videos/:id', 'VideoController.show')
-}).prefix('api/v1')
+  Route.post('videos', 'VideoController.store')
+}).prefix('api/v1').middleware('auth')
+
+Route.group(() => {
+  Route.post('register', 'AuthController.register')
+  Route.post('login', 'AuthController.login')
+}).prefix('auth')
