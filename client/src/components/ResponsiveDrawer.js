@@ -1,20 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import {
+  AppBar, CssBaseline, Divider, Drawer, Typography,
+  Hidden, IconButton, List, ListItem, ListItemIcon,
+  ListItemText, Toolbar, Icon, withStyles
+
+} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -29,10 +20,7 @@ const styles = theme => ({
     },
   },
   appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
+    zIndex: theme.zIndex.drawer + 1
   },
   menuButton: {
     marginRight: 20,
@@ -47,14 +35,10 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-  },
-  bgTitleDrawer: {
-    background: '#555555',
-    height: '100%'
   }
 });
 
-class ResponsiveDrawer extends React.Component {
+class ResponsiveDrawer extends Component {
   state = {
     mobileOpen: false,
   };
@@ -76,13 +60,13 @@ class ResponsiveDrawer extends React.Component {
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, children } = this.props;
 
     const drawer = (
       <div>
-        <div className={classes.toolbar}>
-          <div className='bgTitleDrawer'>
-            <Typography variant='headline' color='inherit' noWrap>
+        <div className={classes.toolbar} style={{ background: '#3F51B5' }}>
+          <div style={{ padding: 15 }}>
+            <Typography variant='headline' noWrap style={{ color: 'white' }}>
               Admin Panel
             </Typography>
           </div>
@@ -90,9 +74,9 @@ class ResponsiveDrawer extends React.Component {
         <Divider />
         <List>
           {['Home', 'Movies', 'Users'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} component={Link} to={index === 0 ? '/' : text.toLowerCase()}>
               <ListItemIcon>{this.handleIconDrawer(index)}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text}/>
             </ListItem>
           ))}          
         </List>
@@ -110,7 +94,7 @@ class ResponsiveDrawer extends React.Component {
               onClick={this.handleDrawerToggle}
               className={classes.menuButton}
             >
-              <MenuIcon />
+              <Icon>menu</Icon>
             </IconButton>
             <Typography variant='h6' color='inherit' noWrap>
               Responsive drawer
@@ -147,19 +131,11 @@ class ResponsiveDrawer extends React.Component {
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          
+          { children }
         </main>
       </div>
     );
   }
 }
-
-ResponsiveDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
-  container: PropTypes.object,
-  theme: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
