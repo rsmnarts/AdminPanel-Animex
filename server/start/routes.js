@@ -24,6 +24,8 @@ Route.group(() => {
   Route.get('videos', 'VideoController.index')
   Route.get('videos/:id', 'VideoController.show')
   Route.post('videos', 'VideoController.store')
+  Route.put('videos/:id', 'VideoController.update')
+  Route.delete('videos/:id', 'VideoController.delete')
 }).prefix('api/v1').middleware('auth')
 
 Route.group(() => {
