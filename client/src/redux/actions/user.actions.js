@@ -1,9 +1,10 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unreachable */
+
 import { userConstants } from  '../constants';
 import { userServices } from '../services';
 import { alertActions } from '.';
-import { history } from '../helpers';
+import { history } from '../../helpers';
 
 export const userActions = {
 	login, logout, getAll

@@ -4,11 +4,11 @@ export const alertActions = {
 	success, error, clear
 }
 
-const success = (message) => {
+const success = message => {
 	return { type: alertConstants.SUCCESS, message }	
 }
 
-const error = (message) => {
+const error = message => {
 	return { type: alertConstants.ERROR, message }
 }
 
