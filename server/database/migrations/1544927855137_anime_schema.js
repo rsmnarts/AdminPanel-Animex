@@ -19,6 +19,7 @@ class AnimeSchema extends Schema {
       table.integer('view')
       table.string('thumbnail', 255)
       table.timestamps()
+      table.timestamp('deleted_at').nullable().defaultTo(null)
     })
   }
 

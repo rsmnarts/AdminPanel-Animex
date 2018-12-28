@@ -2,13 +2,11 @@
 const User = use('App/Models/User')
 class AuthController {
 	async register({request, auth, response}) {
-		const name = request.input("name")
 		const username = request.input("username")
 		const email = request.input("email")
 		const password = request.input("password")
 
 		let user = new User()
-		user.name = name
 		user.username = username
 		user.email = email
 		user.password = password

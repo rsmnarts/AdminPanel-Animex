@@ -4,6 +4,12 @@
 const Model = use('Model')
 
 class Genre extends Model {
+    static boot() {
+        super.boot()
+
+        this.addTrait('@provider:Lucid/SoftDeletes')
+    }
+    
     static get table() {
         return 'genres'
     }

@@ -10,6 +10,7 @@ class AnimeGenreSchema extends Schema {
       table.integer('id_anime')
       table.integer('id_genre')
       table.timestamps()
+      table.timestamp('deleted_at').nullable().defaultTo(null)
     })
   }
 

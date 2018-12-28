@@ -11,6 +11,7 @@ class VideoSchema extends Schema {
       table.string('episode', 10)
       table.text('video_embeded')
       table.timestamps()
+      table.timestamp('deleted_at').nullable().defaultTo(null)
     })
   }
 

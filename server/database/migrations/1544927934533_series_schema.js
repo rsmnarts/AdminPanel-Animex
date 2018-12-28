@@ -9,6 +9,7 @@ class SeriesSchema extends Schema {
       table.increments()
       table.string('title', 100)
       table.timestamps()
+      table.timestamp('deleted_at').nullable().defaultTo(null)
     })
   }
 

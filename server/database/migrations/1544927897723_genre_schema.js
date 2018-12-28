@@ -9,6 +9,7 @@ class GenreSchema extends Schema {
       table.increments()
       table.string('title', 20)
       table.timestamps()
+      table.timestamp('deleted_at').nullable().defaultTo(null)
     })
   }
 

@@ -4,6 +4,12 @@
 const Model = use('Model')
 
 class Anime extends Model {
+    static boot() {
+        super.boot()
+
+        this.addTrait('@provider:Lucid/SoftDeletes')
+    }
+    
     series() {
         return this.hasOne('App/Models/Series', 'id', 'id_series')
     }
