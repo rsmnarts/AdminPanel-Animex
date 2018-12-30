@@ -6,20 +6,21 @@ import {
 } from 'react-router-dom';
 
 import ResponsiveDrawer from './components/ResponsiveDrawer';
-import Home from './layout/Home';
+import { Login, Home } from './layouts';
 
 export default class App extends Component {
   render() {
     return (
-      <Router>
-        <ResponsiveDrawer>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/movies" component={() => <h2>Movies</h2>}/>
-            <Route path="/users" component={() => <h2>Users</h2>}/>
-          </Switch>
-        </ResponsiveDrawer>
-      </Router>
+      // <Router>
+      //   <ResponsiveDrawer>
+      //     <Switch>
+      //       <Route exact path="/" component={Home}/>
+      //       <Route path="/movies" component={() => <h2>Movies</h2>}/>
+      //       <Route path="/users" component={() => <h2>Users</h2>}/>
+      //     </Switch>
+      //   </ResponsiveDrawer>
+      // </Router>
+      <Login/>
     );
   }
 }

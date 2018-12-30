@@ -11,7 +11,7 @@ const styles = theme => ({
 	}
 })
 
-const Home = (props) => {
+const HomeScreen = (props) => {
 	 const { classes } = props;
 
 	return (
@@ -68,4 +68,4 @@ const Home = (props) => {
 	);
 }
 
-export default withStyles(styles)(Home);
+export const Home = withStyles(styles)(HomeScreen);
